@@ -27,7 +27,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 // Providers
 // --------------------
-import { TestService } from './services/test.service';
+import { AuthService } from './services/auth.service';
 import { AppComponent } from './app.component';
 
 
@@ -37,7 +37,7 @@ export const metaReducers: MetaReducer<any>[] = (ENV === 'production') ? [] : [s
 // ----------------------------------------------------
 
 const APP_PROVIDERS = [
-  TestService
+  AuthService
 ];
 
 @NgModule({

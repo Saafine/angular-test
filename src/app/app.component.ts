@@ -10,6 +10,7 @@ export class AppComponent implements OnInit {
   constructor() {
   }
 
-  ngOnInit() {
+  public ngOnInit() {
+    console.log('Initial App State');
   }
 }

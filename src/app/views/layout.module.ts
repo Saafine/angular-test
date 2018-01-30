@@ -9,10 +9,12 @@ import { LayoutComponent } from './layout.component';
 
 
 import { layoutRoutes } from './layout.routes';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
-    LayoutComponent
+    LayoutComponent,
+    LoginComponent
   ],
   imports: [
     CommonModule,
