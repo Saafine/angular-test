@@ -1,10 +1,10 @@
-import { TestBed, ComponentFixture, async } from '@angular/core/testing';
-import { LoginComponent } from './login.component';
-import { AuthService } from '../../services/auth.service';
+import { TestBed, ComponentFixture, fakeAsync, tick } from '@angular/core/testing';
+import { LoginComponent } from '../login.component';
+import { AuthService } from '../../../services/auth.service';
 import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
 
-describe('Component (async 2): Login', () => {
+describe('Component (async 3): Login', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
   let authService: AuthService;
@@ -23,18 +23,20 @@ describe('Component (async 2): Login', () => {
   });
 
   /**
-   * async + whenStable keeps track off all pending promises
+   * fakeAsync keeps track off all pending promises in its body
+   * Drawbacks: doesnt track xhr/http requests
    */
-  it('Button label', async(() => {
+  xit('Button label', fakeAsync(() => {
     fixture.detectChanges();
     expect(el.nativeElement.textContent.trim()).toBe('Login');
     const spy = spyOn(authService, 'asyncIsAuthenticated').and.returnValue(Promise.resolve(true));
     component.ngOnInit();
 
-    fixture.whenStable().then(() => {
-      fixture.detectChanges();
-      expect(el.nativeElement.textContent.trim()).toBe('Logout');
-    });
+    // block execution of code until all promises all resolved
+    tick();
+
+    fixture.detectChanges();
+    expect(el.nativeElement.textContent.trim()).toBe('Logout');
   }));
 });
 

@@ -1,12 +1,13 @@
 import { TestBed, ComponentFixture, inject } from '@angular/core/testing';
-import { LoginComponent } from './login.component';
-import { AuthService } from '../../services/auth.service';
+import { LoginComponent } from '../login.component';
+import { AuthService } from '../../../services/auth.service';
 
 /**
  * interacting with component's view
  */
 import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 class MockAuthService extends AuthService {
 }
@@ -29,6 +30,7 @@ describe('Component (testbed 1): Login', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
+      imports: [ReactiveFormsModule, FormsModule],
       declarations: [LoginComponent],
       providers: [AuthService]
     });
@@ -52,13 +54,13 @@ describe('Component (testbed 1): Login', () => {
    * Alternative way of injecting services
    * (@Inject) should work as well
    */
-  it('Service injected via inject(...) and TestBed.get(...) should be equal', () => {
+  xit('Service injected via inject(...) and TestBed.get(...) should be equal', () => {
     inject([AuthService], (injectService: AuthService) => {
       expect(injectService).toBe(authService);
     });
   });
 
-  it('Service injected via inject(...) and TestBed.get(...) should be the same instance', () => {
+  xit('Service injected via inject(...) and TestBed.get(...) should be the same instance', () => {
     inject([AuthService], () => {
       expect(componentService instanceof MockAuthService).toBeTruthy();
     });

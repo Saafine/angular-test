@@ -1,4 +1,4 @@
-import { LoginComponent } from './login.component';
+import { LoginComponent } from '../login.component';
 
 class MockedAuthService {
   authenticated = false;
@@ -14,7 +14,7 @@ describe('Component (isolated test): Login', () => {
 
   beforeEach(() => {
     service = new MockedAuthService();
-    component = new LoginComponent(service);
+    component = new LoginComponent(service, null);
   });
 
   afterEach(() => {

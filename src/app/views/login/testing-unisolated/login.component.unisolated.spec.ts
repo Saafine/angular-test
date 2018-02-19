@@ -1,5 +1,5 @@
-import { LoginComponent } from './login.component';
-import { AuthService } from '../../services/auth.service';
+import { LoginComponent } from '../login.component';
+import { AuthService } from '../../../services/auth.service';
 
 describe('Component (unisolated test): Login', () => {
   let component: LoginComponent;
@@ -7,7 +7,7 @@ describe('Component (unisolated test): Login', () => {
 
   beforeEach(() => {
     service = new AuthService();
-    component = new LoginComponent(service);
+    component = new LoginComponent(service, null);
   });
 
   afterEach(() => {
